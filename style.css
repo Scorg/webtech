@@ -1,0 +1,170 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+body {
+	font: 0.92em/1.4 Arial, sans-serif;
+}
+
+#body-wrapper {
+	min-height: 100%;
+	position: relative;
+}
+
+#page {
+	overflow: hidden;
+	padding-bottom: 110px;
+}
+
+#content {
+	padding-right: 300px;
+}
+
+header, footer {
+	width: 100%;
+}
+
+header {
+	/*height: 50px;*/
+	background: #202020;
+	border-bottom: 2px solid #ffa000;
+	margin: 0;
+	padding: 20px 0 0 0;
+}
+
+aside {
+	float: right;
+	width: 300px;
+	height: 100%;
+	margin-top: 50px;
+	/*margin-right: -300px;*/
+	padding-left: 10px;
+	
+	/*border-left: 1px solid #eaeaea;*/
+}
+
+footer {
+	/*vertical-align: bottom;*/
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	border-top: 1px solid #cccccc;
+	padding-top: 10px;
+	padding-bottom: 15px;
+	margin-top: 30px;
+	background-color: #ffffff;
+	height: 80px;
+}
+
+nav {
+	display: inline-block;
+	/*padding: 0;
+	margin: 0;*/
+}
+
+.logo {
+	vertical-align: baseline;
+	display: inline-block;
+	/*float: left;*/
+	margin: 0 0 0 50px;
+	padding: 0;
+	font-size: 3em;
+	line-height: 1em;
+	color: #ffa000;
+}
+
+article {
+	margin-top: 30px;
+}
+
+.article-title {
+	font-family: "Segoe UI";
+	font-size: 3em;
+	line-height: 1.01em;
+	margin: 0 0 10px 0;
+}
+
+.article-date {
+	display: inline;
+	font-size: 0.9em;
+	color: #303030;
+	padding-left: 0px;
+	padding-right: 10px;
+}
+
+.article-author {
+	display: inline;
+	padding-left: 10px;
+}
+
+.article-text {
+	margin-top: 25px;
+	margin-bottom: 25px;
+	padding-right: 20px;
+	font-size: 1em;
+	line-height: 1.4;
+	/*text-indent: 1cm;*/
+}
+
+ul.inline {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+ul.inline > li {
+	display: inline;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+
+header nav a {
+	font-size: 17px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #ffffff;
+}
+
+header nav a:hover {
+	color: #ffa000;
+}
+
+.pull-left {
+	float: left !important;
+}
+
+.pull-right {
+	float: right !important;
+}
+
+.center {
+	margin:auto;
+}
+
+.middle {
+	vertical-align: middle;
+}
+
+.col {
+	float: left;
+}
+
+@media (min-width:768px){
+	.container{
+		width: 750px
+	}
+}
+
+@media (min-width:992px){
+	.container{
+		width: 970px
+	}
+}
+
+@media (min-width:1200px){
+	.container{
+		width: 1100px
+	}
+}
