@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Лабораторная 1</title>
+	<link type="text/css" rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+<div id="body-wrapper">
+	<header>
+		<div class="container center">
+			<!--div class="logo"-->
+				<span class="logo">Бложик</span>
+			<!--/div-->
+		
+			<nav class="pull-right">
+			<ul class="inline middle">
+				<li><a href="/">Главная</a></li>
+				<li><a href="about">О нас</a></li>
+				<li><a href="contact">Контакты</a></li>			
+			</ul>
+			</nav>
+		</div>
+	</header>
+	
+	<div id="page" class="container center">		
+		<div id="content">
+			<form action="register.php" method="post">
+				<label for="user-name">Имя</label>
+				<input id="user-name" type="text" name="name" required></input>
+				
+				<label for="user-surname">Фамилия</label>
+				<input id="user-surname" type="text" name="surname"></input>
+				
+				<label for="user-email">Email</label>
+				<input id="user-email" type="email" name="email" required></input>
+				
+				<label for="user-country">Страна</label>
+				<input id="user-country" type="text" name="country"></input>
+				
+				<label for="user-password">Пароль</label>
+				<input id="user-password" type="password" name="password" required></input>
+				
+				<label for="user-password-confirm">Подтверждение пароля</label>
+				<input id="user-password-confirm" type="password" name="password_confirm" required></input>
+				
+				<input type="submit" class="orange-btn big-btn" value="Зарегистрироваться"/>
+			</form>	
+		</div>
+	</div>
+	
+	<footer>
+		<div class="container center">
+		&copy; Гудков Виктор 2016, некоторые права защищены
+		</div>
+	</footer>
+</div>
+</body>
+</html>

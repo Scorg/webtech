@@ -4,6 +4,10 @@ html, body {
 	height: 100%;
 }
 
+div, section, article, header, footer, aside {
+	box-sizing: border-box;
+}
+
 body {
 	font: 0.92em/1.4 Arial, sans-serif;
 }
@@ -19,7 +23,9 @@ body {
 }
 
 #content {
-	padding-right: 300px;
+	/*padding-right: 300px;*/
+	/*float: left;*/
+	padding-top: 50px;
 }
 
 header, footer {
@@ -167,4 +173,88 @@ header nav a:hover {
 	.container{
 		width: 1100px
 	}
+}
+
+/***********************************
+				Для форм
+************************************/
+input, select, textarea {
+	font-family: Helvetica,  Arial,  sans-serif;
+	outline: none;
+	margin: 0 0 15px 0;
+}
+
+input[type="text"], input[type="tel"], input[type="email"], input[type="password"], select, textarea {
+	width: 100%;
+	font-size: 0.875em;
+	display: block;
+	outline-width: 0;
+	border: #e6e6e6 1px solid;
+	line-height: 18px;
+	padding: 12px 15px;
+	color: #555;
+	resize: none;
+	box-sizing: border-box;
+	border-radius: 2px
+}
+
+input[type="text"]:hover, input[type="tel"]:hover, input[type="email"]:hover, input[type="password"]:hover, select:hover, textarea:hover {
+	border-color: #bbb !important
+}
+
+input[type="text"]:focus, input[type="tel"]:focus, input[type="email"]:focus, input[type="password"]:focus, select:focus, textarea:focus {
+	border-color: #bbb !important
+}
+
+textarea {
+	height: 150px
+}
+
+input[type="text"]:required, input[type="tel"]:required, input[type="email"]:required, input[type="password"]:required, textarea:required {
+	padding: 12px 45px 12px 15px;
+	background: #fff url(assets/form/form-required.png) right 0 no-repeat
+}
+
+label {
+	display: block;
+	font-size: 1em;
+	margin: 0 0 7px 0;
+	/*cursor: pointer;*/
+	font-weight: bold
+}
+
+.orange-btn {
+	height: 40px;
+	line-height: 40px;
+	display: block;
+	float: left;
+	padding: 0 20px;
+	color: #fff;
+	font-size: 0.875em;
+	text-align: center;
+	cursor: pointer;
+	text-decoration: none;
+	border: 0;
+	border-radius: 0;
+	padding: 0 20px 4px 20px;
+}
+
+.orange-btn {
+	background-color: #f8b33f
+}
+
+.orange-btn:hover {
+	color: #fff;
+	background-color: #ffca72
+}
+
+.orange-btn:active {
+	box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3)
+}
+
+.big-btn {
+	height: 46px;
+	line-height: 46px;
+	padding: 0 30px;
+	font-size: 1.125em;
 }
