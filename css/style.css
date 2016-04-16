@@ -25,7 +25,12 @@ body {
 #content {
 	/*padding-right: 300px;*/
 	/*float: left;*/
-	padding-top: 50px;
+	/*position: relative;*/
+	/*display: inline-block;
+	vertical-align: top;*/
+	height: 100%;
+	/*width: auto;*/
+	margin-top: 50px;
 }
 
 header, footer {
@@ -42,6 +47,11 @@ header {
 
 aside {
 	float: right;
+	/*position: relative;
+	top: 0px;
+	bottom: 0px;*/
+	/*display: inline-block;
+	vertical-align: top;*/
 	width: 300px;
 	height: 100%;
 	margin-top: 50px;
@@ -181,7 +191,7 @@ header nav a:hover {
 input, select, textarea {
 	font-family: Helvetica,  Arial,  sans-serif;
 	outline: none;
-	margin: 0 0 15px 0;
+	margin: 0 0 7px 0;
 }
 
 input[type="text"], input[type="tel"], input[type="email"], input[type="password"], select, textarea {
@@ -215,12 +225,24 @@ input[type="text"]:required, input[type="tel"]:required, input[type="email"]:req
 	background: #fff url(assets/form/form-required.png) right 0 no-repeat
 }
 
+input[type="submit"] {
+	margin: 15px 0 0 0;
+}
+
 label {
 	display: block;
 	font-size: 1em;
-	margin: 0 0 7px 0;
+	margin: 15px 0 7px 0;
 	/*cursor: pointer;*/
 	font-weight: bold
+}
+
+input.error {
+	border-color: red;
+}
+
+small.error {
+	color: red;
 }
 
 .orange-btn {
