@@ -222,7 +222,7 @@ textarea {
 
 input[type="text"]:required, input[type="tel"]:required, input[type="email"]:required, input[type="password"]:required, textarea:required {
 	padding: 12px 45px 12px 15px;
-	background: #fff url(assets/form/form-required.png) right 0 no-repeat
+	background: #fff url(/assets/form/form-required.png) right 0 no-repeat
 }
 
 input[type="submit"] {
