@@ -14,6 +14,9 @@ require_once 'core/controller.php';
 require_once 'core/request.php';
 require_once 'core/response.php';
 
+session_start([
+	'coockie_lifetime' => 1200
+]);
 
 //Создаём объекты
 $db = new PDO('mysql:host=localhost;dbname=asu13', 'uiti', 'piska');
@@ -25,7 +28,7 @@ $registry['db'] = $db;
 $registry['request'] = $request;
 $registry['response'] = $response;
 
-$response->addHeader("Content-type: text/html; charset: utf-8;");
+$response->addHeader("Content-type: text/html; charset=utf-8;");
 
 
 //Находим и вызываем контроллер

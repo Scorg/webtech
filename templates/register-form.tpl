@@ -1,4 +1,9 @@
 <form action="/register" method="post">
+	<input name="hash" type="hidden" value="<?= $hash ?>" />
+	<?php if (!empty($error_hash)): ?>
+		<small class="error"><?= $error_hash ?></small>
+	<?php endif ?>
+	
 	<label for="user-name">Имя</label>
 	<input id="user-name" type="text" name="firstname" value="<?= $firstname ?>" class="<?= empty($error_firstname) ? '' :'error' ?>" required/>
 	<?php if (!empty($error_firstname)): ?>

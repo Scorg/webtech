@@ -7,8 +7,16 @@ class ControllerRegister extends Controller {
 		$form_data = array();
 		
 		//Послали / не послали данные
-		if (!empty($input)) {
+		if (!empty($input['hash'])) {
 			$error = false;
+			
+			//echo $input['hash'];
+			
+			//Проверяем хэшку
+			if (!$this->checkHash($input['hash'])) {
+				$form_data['error_hash'] = 'Данная форма не была отправлена с нашего сервера';
+				$error = true;
+			}
 			
 			//Проверяем имя
 			if (empty($input['firstname'])) {
@@ -36,6 +44,7 @@ class ControllerRegister extends Controller {
 			
 			if ($error) {
 				$form_data = array_merge($form_data, array(
+					'hash' => $this->setNewHash(),
 					'firstname' => $input['firstname'],
 					'lastname' => $input['lastname'],
 					'email' => $input['email'],
@@ -43,15 +52,20 @@ class ControllerRegister extends Controller {
 				));
 			} else {
 				//Создать нового пользователя и перенаправить на страницу успеха
+				$this->unsetHash();
+				
+				//Перенаправляем на главную страницу
+				$this->response->redirect('/index.html');
 			}
-		} else {
+		} else {			
 			//Данные не посылали, выдаём пустую форму
-			/*$form_data = array(
-				'firstname' => '',
+			$form_data = array(
+				'hash' => $this->setNewHash()
+				/*'firstname' => '',
 				'lastname' => '',
 				'email' => '',
-				'country' => ''
-			);*/
+				'country' => ''*/
+			);
 		}
 		
 		$data = array(
@@ -60,5 +74,23 @@ class ControllerRegister extends Controller {
 		);
 		
 		$this->response->setOutput($this->render('common/base.tpl', $data));
+	}
+	
+	function setNewHash()
+	{
+		$hash = md5(date("H:i:s"));			
+		$_SESSION['register_form_hash'] = $hash;
+		
+		return $hash;
+	}
+	
+	function checkHash($hash = '')
+	{
+		return isset($_SESSION['register_form_hash']) && $hash == $_SESSION['register_form_hash'];
+	}
+	
+	function unsetHash()
+	{
+		unset($_SESSION['register_form_hash']);
 	}
 }
