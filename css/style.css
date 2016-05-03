@@ -45,6 +45,17 @@ header {
 	padding: 20px 0 0 0;
 }
 
+header nav a {
+	font-size: 17px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #ffffff;
+}
+
+header nav a:hover {
+	color: #ffa000;
+}
+
 aside {
 	float: right;
 	/*position: relative;
@@ -80,6 +91,10 @@ nav {
 	margin: 0;*/
 }
 
+article {
+	margin-top: 30px;
+}
+
 .logo {
 	vertical-align: baseline;
 	display: inline-block;
@@ -89,10 +104,6 @@ nav {
 	font-size: 3em;
 	line-height: 1em;
 	color: #ffa000;
-}
-
-article {
-	margin-top: 30px;
 }
 
 .article-title {
@@ -113,6 +124,7 @@ article {
 .article-author {
 	display: inline;
 	padding-left: 10px;
+	padding-right: 10px;
 }
 
 .article-text {
@@ -136,17 +148,6 @@ ul.inline > li {
 	padding-left: 5px;
 }
 
-header nav a {
-	font-size: 17px;
-	font-weight: bold;
-	text-decoration: none;
-	color: #ffffff;
-}
-
-header nav a:hover {
-	color: #ffa000;
-}
-
 .pull-left {
 	float: left !important;
 }
@@ -155,8 +156,20 @@ header nav a:hover {
 	float: right !important;
 }
 
+.text-left {
+	text-align: left !important;
+}
+
+.text-center {
+	text-align: center !important;
+}
+
+.text-right {
+	text-align: right !important;
+}
+
 .center {
-	margin:auto;
+	margin: auto;
 }
 
 .middle {
@@ -217,7 +230,8 @@ input[type="text"]:focus, input[type="tel"]:focus, input[type="email"]:focus, in
 }
 
 textarea {
-	height: 150px
+	min-height: 150px;
+	resize: vertical;
 }
 
 input[type="text"]:required, input[type="tel"]:required, input[type="email"]:required, input[type="password"]:required, textarea:required {
@@ -249,7 +263,7 @@ small.error {
 	height: 40px;
 	line-height: 40px;
 	display: block;
-	float: left;
+	/*float: left;*/
 	padding: 0 20px;
 	color: #fff;
 	font-size: 0.875em;

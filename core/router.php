@@ -38,9 +38,10 @@ class Router
 		$modelClassName = 'Model' . $controllerName;
 		$controllerClassName = 'Controller' . $controllerName;
 		
-		$method = array_shift($pieces);
+		// Заглядываем, что нам дальше указали
+		$method = $pieces[0];
 		
-		//Не даём вызывать магические методы
+		//Не даём вызывать магические методы (мы дописываем 'action_', надо ли это вообще делать?
 		if (substr($method, 0, 2) == '__') {
 			return false;
 		}
@@ -48,20 +49,13 @@ class Router
 		if (empty($method)) {
 			$method = 'index';
 		}
-				
-		/*$fileWithModel = strtolower($modelName) . 'php';
-		$fileWithModelPath	= MODELS_ROOT . $cmd_path . $fileWithModel;
-		
-		if (file_exists($fileWithModelPath)) {
-			include_once $fileWithModelPath;
-		}*/
 		
 		$fileWithController = strtolower($controllerName) . '.php';
 		$fileWithControllerPath = CONTROLLERS_ROOT . $cmd_path . $fileWithController;
 						
 		if (file_exists($fileWithControllerPath)) {
 			include_once $fileWithControllerPath;
-		} else {
+		} else {			
 			//Здесь нужно добавить обработку ошибки.
 			//Например, перекинуть пользователя на страницу 404
 			return false;
@@ -71,10 +65,18 @@ class Router
 		$action = 'action_' . $method;
 		
 		if (method_exists($controller, $action)){
+			//Удаляем имя метода из массива
+			array_shift($pieces);
 			call_user_func(array($controller, $action), $pieces);
 		} else {
-			//Здесь тоже нужно добавить обработку ошибок
-			return false;
+			// Не нашли указанного метода. Передадим оставшиеся части как параметр
+			$action = 'action_index';
+			
+			if (method_exists($controller, $action)) {
+				call_user_func(array($controller, $action), $pieces);
+			} else {
+				return false;
+			}
 		}
 	}	
 }

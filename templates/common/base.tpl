@@ -18,7 +18,14 @@
 			<ul class="inline middle">
 				<li><a href="/">Главная</a></li>
 				<li><a href="/about">О нас</a></li>
-				<li><a href="/contact">Контакты</a></li>			
+				<li><a href="/contact">Контакты</a></li>
+				<?php if (isset($_SESSION['user'])): ?>				
+				<li><a href="/account"><?= $_SESSION['user']['firstname'] . ' ' . $_SESSION['user']['lastname'] ?></a></li>
+				<li><a href="/account/logout">Выйти</a></li>
+				<?php else: ?>
+				<li><a href="/account/register">Регистрация</a></li>			
+				<li><a href="/account/login">Войти</a></li>			
+				<?php endif ?>
 			</ul>
 			</nav>
 		</div>
