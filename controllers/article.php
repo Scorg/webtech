@@ -7,6 +7,8 @@ class ControllerArticle extends Controller {
 		
 		if ($params[1]=='edit') {
 			$this->edit(intval($params[0]));
+		} elseif ($params[1]=='delete'){
+			$this->delete(intval($params[0]));
 		} else {		
 			$mdl = $this->load->model('article');
 			$art = $mdl->getArticle(intval($params[0]));
@@ -66,6 +68,7 @@ class ControllerArticle extends Controller {
 		}
 		
 		// Если ничего не сработало (не перенаправлили), то возвращаем назад
+		$form_data['action'] = 'new';
 		$form_data['title'] = $art['title'];
 		$form_data['text'] = $art['text'];		
 		$form = $this->load->view('article-form.tpl', $form_data);
@@ -91,10 +94,14 @@ class ControllerArticle extends Controller {
 		$obj = $mdl->getArticle($id);
 		
 		// Если нет такой статьи
-		if (is_null($obj)) $this->response->redirect('/');
+		if (is_null($obj)) { var_dump($ID); }//$this->response->redirect('/');
 		
 		// Если текущий пользователь не автор статьи
-		if ($obj->author_id != $_SESSION['user']['id']) $this->repsonse->redirect('/article/' . $id);
+		if ($obj->author_id != $_SESSION['user']['id']) {
+			var_dump($obj->author_id);
+			var_daump($_SESSION['user']['id']);
+			//$this->repsonse->redirect('/article/' . $id);
+		}
 		
 		if (isset($art)) {
 			/*if (empty($art['id'])) {
@@ -120,7 +127,7 @@ class ControllerArticle extends Controller {
 				
 				$result = $mdl->editArticle($obj);
 				
-				if ($result !== false) 
+				if ($result === true) 
 					$this->response->redirect('/article/' . $id);
 			} 
 			
@@ -134,7 +141,8 @@ class ControllerArticle extends Controller {
 			$form_data['title'] = $obj->title;
 			$form_data['text'] = $obj->text;
 		}
-			
+		
+		$form_data['action'] = $id . '/edit';
 		$form = $this->load->view('article-form.tpl', $form_data);
 		
 		$data = array();
@@ -143,5 +151,12 @@ class ControllerArticle extends Controller {
 		$data['content'] = $form;
 		
 		$this->response->setOutput($this->load->view('common/base.tpl', $data));
+	}
+	
+	function delete($id)
+	{
+		$mdl = $this->load->model('article');
+		$mdl->deleteArticle($id);
+		$this->response->redirect('/');
 	}
 }

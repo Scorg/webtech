@@ -1,4 +1,4 @@
-<form action="/article/new" method="post">
+<form action="/article/<?= $action ?>" method="post">
 	<?php if (isset($error) && !empty($error['other'])): ?>
 		<small class="error"><?= $error['other'] ?></small>
 	<?php endif ?>

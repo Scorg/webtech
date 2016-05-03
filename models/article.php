@@ -40,10 +40,25 @@ class ModelArticle extends Model {
 	
 	public function editArticle($article)
 	{
-		if (empty($article->title) || empty($article->text)) return false;;
+		if (empty($article->title) || empty($article->text) || empty($_SESSION['user'])) return false;
+		
 		$sql = $this->db->prepare('update ' . DB_PREFIX . 'article set title=?, date=?, text=? where id=?');
 		if ($sql===false) return false;
 		return $sql->execute(array($article->title, date('Y-m-d H:i:s', time()), $article->text, $article->id));
+	}
+	
+	public function deleteArticle($id)
+	{
+		if (empty($_SESSION['user'])) return false;
+		
+		$userid = intval($_SESSION['user']['id']);
+		$sql = $this->db->prepare('delete from ' . DB_PREFIX . 'article where id=? and author_id=?');
+		
+		if ($sql===false) return false;
+		
+		$sql->bindValue(1, intval($id), PDO::PARAM_INT);
+		$sql->bindValue(2, intval($userid), PDO::PARAM_INT);
+		return $sql->execute();
 	}
 	
 	public function getArticle($id)
